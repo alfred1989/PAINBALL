@@ -15,13 +15,23 @@ public class Comment {
     private Long id;
      private String name;
     private String commentUser;
+    private int rating;
 
     public Comment() {
     }
 
-    public Comment(String name, String commentUser) {
+    public Comment(String name, String commentUser, int rating) {
         this.name = name;
         this.commentUser = commentUser;
+        this.rating = rating;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public Long getId() {

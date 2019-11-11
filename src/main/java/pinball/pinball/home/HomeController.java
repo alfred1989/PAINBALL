@@ -10,6 +10,8 @@ public class HomeController {
         return "index";
     }
 
+
+
     @GetMapping("/comment")
     public String comment(){
         return "comment";

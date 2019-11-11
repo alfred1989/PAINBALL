@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -32,9 +33,16 @@ public class CommentController {
 
 
     @PostMapping("/save")
+    @ResponseBody
     public String save(Comment comment){
         commentRepository.save(comment);
-        return "redirect:/addComment";
+         String pole =comment.getCommentUser();
+        String commentUser= "kurczak";
+        if(pole.equals(commentUser)){
+
+            return "<h1>wulgarne slownictwo brak mozliwosci dodania komentarza<h1>";
+        }else
+        return "redirect:/allComment";
 
     }
 }

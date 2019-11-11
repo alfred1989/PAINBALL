@@ -28,17 +28,14 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a href="/"><img src="../img/pain.png" height="50" width="150"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
+                    <a class="nav-link" href="/">Powrót do strony głównej</a>
                 </li>
             </ul>
         </div>
@@ -48,9 +45,8 @@
 <header class="masthead text-center text-white">
     <div class="masthead-content">
         <div class="container">
-            <h1 class="masthead-heading mb-0">One Page Wonder</h1>
-            <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-            <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+            <h1 class="masthead-heading mb-0">Witamy w Forest Wolf</h1>
+
         </div>
     </div>
     <div class="bg-circle-1 bg-circle"></div>
@@ -64,19 +60,34 @@
         <div class="row align-items-center">
             <div class="col-lg-6 order-lg-2">
                 <div class="p-5">
-                    <img class="img-fluid rounded-circle" src="../comment/img/01.jpg" alt="">
+                    <img class="img-fluid rounded-circle" src="../comment/img/ok.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6 order-lg-1">
                 <div class="p-5">
 
-
                     <form th:action="@{/save}" th:object="${commentUser}" method="post">
-                    <input type="text" th:field="*{name}">
-                    <input type="text" th:field="*{commentUser}">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
 
+                            <label class="form-group" for="exampleFormControlInput1">Nazwa/Pseudonim</label>
+                            <input th:field="*{name}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nazwa/Pseudonim">
+                        <p>  </p>
+                        <label  class="form-group" for="exampleFormControlSelect1">Twoja ocena w skali od 1 do 5</label>
+                        <select th:field="*{rating}" class="form-control" id="exampleFormControlSelect1" name="stockType">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+
+
+                            <label  class="form-group" for="exampleFormControlTextarea1">Opinia</label>
+                            <textarea th:field="*{commentUser}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                                 <input type="submit" class="btn btn-warning">
                     </form>
+
 
 
 
@@ -88,17 +99,16 @@
 </section>
 
 <section>
-
-
-
-<!-- Footer -->
-<footer class="py-5 bg-black">
     <div class="container">
-        <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2019</p>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="p-5">
+                    <img class="img-fluid rounded-circle" src="../comment/img/01.jpg" alt="">
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.container -->
-</footer>
-
+</section>
 <!-- Bootstrap core JavaScript -->
 <script src="../comment/vendor/jquery/jquery.min.js"></script>
 <script src="../comment/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
