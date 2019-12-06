@@ -3,8 +3,8 @@ package pinball.pinball.Comment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -17,32 +17,67 @@ public class CommentController {
         this.commentRepository = commentRepository;
     }
 
+
     @GetMapping("/allComment")
-    public String allComment(Model model){
+    public String allComment(Model model) {
         List<Comment> commentList = commentRepository.findAll();
-        model.addAttribute("coments", commentList );
+        model.addAttribute("coments", commentList);
         return "comment";
     }
 
+//
+//    @GetMapping("/srednia")
+//    public String sredniaOcen(Model model) {
+//
+//        int sr = commentRepository.srednia();
+//        model.addAttribute("sr", sr);
+//
+//        return "admin";
+//
+//    }
 
     @GetMapping("/addComment")
-    public String addComment(Model model){
+    public String addComment(Model model) {
         model.addAttribute("commentUser", new Comment());
         return "addComment";
     }
 
 
+
+
     @PostMapping("/save")
-    @ResponseBody
-    public String save(Comment comment){
+
+    public String save(Comment comment) {
         commentRepository.save(comment);
-         String pole =comment.getCommentUser();
-        String commentUser= "kurczak";
-        if(pole.equals(commentUser)){
+        String pole = comment.getCommentUser();
+        String commentUser = "kurczak";
+        if (pole.equals(commentUser)) {
 
-            return "<h1>wulgarne slownictwo brak mozliwosci dodania komentarza<h1>";
-        }else
-        return "redirect:/allComment";
+            return  "vulgarWords";
+        } else
+            return "redirect:/allComment";
 
+    }
+
+    @GetMapping("/deleteComment")
+    public String participantOpinionAdmin(Model model) {
+        List<Comment> allOpinion = commentRepository.findAll();
+        model.addAttribute("opinions", allOpinion);
+
+        return "deleteComment";
+    }
+
+    @GetMapping("/delete/{id}")
+
+    public String deleteOpinion(@PathVariable Long id) {
+
+
+        commentRepository.deleteById(id);
+        return "redirect:/deleteComment";
+    }
+
+    @GetMapping("/vulgarWords")
+    public String vulgarWords(){
+        return "vulgarWords";
     }
 }

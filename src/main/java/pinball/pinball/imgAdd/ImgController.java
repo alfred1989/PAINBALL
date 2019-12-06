@@ -38,6 +38,13 @@ public class ImgController {
         return "addImg" ;
     }
 
+    @RequestMapping(value = "/gallery")
+    public String gallery(Model model, Pageable pageable){
+        final Page<Image> pages = imgService.findPage(pageable);
+        model.addAttribute("pages", pages);
+        return "gallery" ;
+    }
+
     @RequestMapping(value = "/IMG")
     public String xImg(Model model, Pageable pageable){
         final Page<Image> page = imgService.findPage(pageable);
@@ -92,6 +99,12 @@ public class ImgController {
             redirectAttributes.addFlashAttribute("flash.message","Failed to deleted" + filename + "=>" + e.getMessage());
         }
         return "addImg ";
+    }
+
+
+    @GetMapping("/gallery")
+    public String gallery(){
+        return "gallery";
     }
 }
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" >
 
 <head>
 
@@ -72,17 +72,28 @@
                       <th scope="col">Nazwa/Pseudonim</th>
                       <th scope="col">Opinia</th>
                       <th scope="col">Ocena od 1 do 5</th>
+
+
                   </tr>
                   </thead>
                   <tbody>
-                  <tr  th:each="coment: ${coments}" >
+                  <tr  th:each="coment: ${coments}">
 
-                      <td th:text="${coment.name}" ></td>
+                      <td th:text="${coment.name} " ></td>
                       <td th:text="${coment.commentUser}"></td>
                       <td th:text="${coment.rating}"></td>
+
+
+
+
                   </tr>
+
+
                   </tbody>
+
+
               </table>
+
           </div>
         </div>
       </div>
