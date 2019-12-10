@@ -19,6 +19,23 @@
   <!-- Theme CSS -->
   <link href="../message/css/freelancer.min.css" rel="stylesheet">
 
+    <SCRIPT language="JavaScript">
+            function LiczZnaki(field,cnt,maxchar) { // począek funkcji
+              var mlength = field.getAttribute ? parseInt(field.getAttribute("maxlength")) : ""; // pobieramy znacznik maxlength z textarea
+              if (field.getAttribute && field.value.length > mlength){
+                field.value = field.value.substring(0, mlength);
+              }
+
+              if (field.value.length <= maxchar) { //jesli długość ciagu jest mniejsza badz rowna maxchar
+                field.value = field.value.substring(0, maxchar);
+                cnt.innerHTML = (0 +field.value.length); // wyswietlamy cyferke informującą o liości znaków.
+              }
+              else{
+                document.getElementById("LiczZnaki").disabled = true; // jesli jakimś cudem w polu bedzie wiećęj znaków od maxchar pokazujemy Error
+              }
+            }
+  </script>
+
 </head>
 
 <body id="page-top">
@@ -91,8 +108,11 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Message</label>
-                <textarea class="form-control" id="message" rows="5" th:field="*{messageText}" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
-                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+                <textarea class="form-control" id="message" rows="5" th:field="*{messageText}" placeholder="Message"
+                          onkeyup="LiczZnaki(this,cnt1,255);" onmouseup="LiczZnaki(this,cnt1,250);"
+                          required="required" data-validation-required-message="Please enter a message."></textarea>
+                <span id="cnt1">0</span>/255<br><br>
+                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton"  onclick="LiczZnaki">Send</button>
           </form>
         </div>
       </div>

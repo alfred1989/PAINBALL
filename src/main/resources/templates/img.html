@@ -27,7 +27,7 @@
 </head>
 
 
-<body id="page-top">
+<body style="background-color: #3F3F3F" id="page-top">
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
@@ -41,16 +41,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/allComment">Komentarze</a>
+                    <a class="nav-link js-scroll-trigger" href="/">Strona Główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Co oferujemy?</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">Szybki podgląd</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a>
+
                 </li>
             </ul>
         </div>
@@ -60,12 +54,12 @@
 <!--&lt;!&ndash;-->
 
 <!-- Portfolio Section -->
-<section  id="portfolio">
+<section  style="position: absolute; top: 20%; left: 15%;" id="portfolio">
     <div class="container-fluid p-0">
         <div class="row no-gutters">
             <div  th:each="image :${page.content}"  class="col-lg-4 col-sm-6">
-                <a   class="portfolio-box"  th:href="@{'/images/' + ${image.name}+ '/raw'}">
-                     <img class="img-fluid" th:src="@{'/images/' + ${image.name}+ '/raw'}" alt="">
+                <a  style="width: 270px;height: 270px;"  class="portfolio-box"  th:href="@{'/images/' + ${image.name}+ '/raw'}">
+                     <img style="width: 250px;height: 250px" class="img-fluid" th:src="@{'/images/' + ${image.name}+ '/raw'}" alt="">
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">
                             Category

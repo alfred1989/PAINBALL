@@ -25,16 +25,7 @@ public class CommentController {
         return "comment";
     }
 
-//
-//    @GetMapping("/srednia")
-//    public String sredniaOcen(Model model) {
-//
-//        int sr = commentRepository.srednia();
-//        model.addAttribute("sr", sr);
-//
-//        return "admin";
-//
-//    }
+
 
     @GetMapping("/addComment")
     public String addComment(Model model) {

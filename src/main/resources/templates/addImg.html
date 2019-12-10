@@ -63,6 +63,8 @@
         </li>
 
 
+
+
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
@@ -75,7 +77,10 @@
 
         <!-- Main Content -->
         <div id="content">
-
+            <form method="post" enctype="multipart/form-data" action="/images">
+                <p><input type="file" name="file"></p>
+                <p><input type="submit" name="upload"></p>
+            </form>
 
             <!--<h3 th:if="${#vars['flash.message']}" th:text="${#vars['flash.message']}" class="flash"></h3>-->
             <div>
@@ -94,16 +99,13 @@
                         <td><img style="width: 20%;height: 20%" th:src="@{'/images/' + ${image.name}+ '/raw'}"/></td>
                         <td>
                             <form th:method="delete" th:action="@{'/images/' + ${image.name}}">
-                                <input type="image" value="Delete" src="../additives/man-30322_1280.png" height="50" width="50"/>
+                                <input style="position: absolute;left: 50%;" type="image" value="Delete" src="../additives/man-30322_1280.png" height="50" width="50"/>
                             </form>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-                <form method="post" enctype="multipart/form-data" action="/images">
-                    <p><input type="file" name="file"></p>
-                    <p><input type="submit" name="upload"></p>
-                </form>
+
             </div>
 
 
