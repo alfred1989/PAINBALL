@@ -4,6 +4,7 @@ package pinball.pinball.MeinConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -12,6 +13,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import static org.hibernate.criterion.Restrictions.and;
 
 @Configuration
 public class MeinConfing  extends WebSecurityConfigurerAdapter {
@@ -37,17 +40,14 @@ public class MeinConfing  extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                // .antMatchers("/static/").permitAll()
-                .antMatchers("/", "/IMG").permitAll()
-                .antMatchers("/allComment", "/message").permitAll()
-                .antMatchers("/admin","/deleteComment","/editDates", "/addImg","/images").hasRole("ADMIN")
+                .antMatchers("/", "/IMG","/allComment", "/message").permitAll()
+                .antMatchers(HttpMethod.POST,"/admin","/deleteComment","/editDates", "/addImg","/images").hasRole("ADMIN")
               .antMatchers("/resources/**").permitAll().anyRequest().permitAll()
-
-
                 .anyRequest().hasRole("ADMIN")
                 .and()
-
-
-                .formLogin().permitAll();
+                .formLogin().permitAll()
+                .and()
+                .csrf().disable();
     }
 //    @Override
 //    public void configure(WebSecurity web) throws Exception {
